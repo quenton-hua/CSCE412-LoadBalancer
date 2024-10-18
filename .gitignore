@@ -1,0 +1,52 @@
+# Ignore object files
+*.o
+*.obj
+
+# Ignore compiled binaries
+load_balancer
+*.exe
+
+# Ignore build directories
+build/
+bin/
+out/
+
+# Ignore temporary files
+*.tmp
+*.temp
+
+# Ignore editor-specific files
+*.swp
+*.swo
+
+# Ignore logs
+*.log
+
+# Ignore backup files
+*~
+*.bak
+
+# Ignore IDE-specific files (uncomment if using specific IDEs)
+# Visual Studio
+.vscode/
+*.sln
+*.vcxproj
+*.vcxproj.filters
+*.user
+*.suo
+
+# Code::Blocks
+*.layout
+*.depend
+
+# Xcode
+*.xcodeproj/
+*.xcworkspace/
+*.xcuserdatad/
+
+log.txt
+
+# CMake
+CMakeFiles/
+CMakeCache.txt
+cmake_install.cmake

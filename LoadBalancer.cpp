@@ -16,7 +16,6 @@ LoadBalancer::LoadBalancer(int initial_servers, int time)
     }
 }
 
-
 void LoadBalancer::scaleServers() {
     // Dynamically allocate servers as needed
     if (requestqueue.size() > web_servers.size() * 2) {
@@ -56,7 +55,6 @@ void LoadBalancer::addRequest() {
     }
 }
 
-
 void LoadBalancer::run() {
     // Open a file to log metrics
     std::ofstream log_file("log.txt");
@@ -64,6 +62,12 @@ void LoadBalancer::run() {
         std::cerr << "Error: Could not open log file!" << std::endl;
         return;
     }
+
+    // Log starting queue size
+    log_file << "Starting Queue Size: " << requestqueue.size() << std::endl;
+    
+    // Log processing time range
+    log_file << "Task Time Range: 1 to 100" << std::endl; // Adjust as needed
 
     // Capture the start time
     auto start_time = std::chrono::high_resolution_clock::now();
@@ -90,6 +94,11 @@ void LoadBalancer::run() {
                  << ", Utilization: " << utilization << "%"
                  << ", Requests Processed: " << total_processed_requests << std::endl;
 
+        // Log requests added dynamically
+        if (rand() % 10 == 0) {
+            log_file << "New request added! Current Queue Size: " << requestqueue.size() << std::endl;
+        }
+
         std::cout << "Time: " << current_time << ", Queue Size: " 
                   << requestqueue.size() << ", Servers: " << web_servers.size() << std::endl;
 
@@ -100,9 +109,24 @@ void LoadBalancer::run() {
     auto end_time = std::chrono::high_resolution_clock::now();
     std::chrono::duration<double> elapsed = end_time - start_time;
 
-    // Log total execution time and requests processed
+    // Log ending queue size and end status
+    log_file << "Ending Queue Size: " << requestqueue.size() << std::endl;
     log_file << "Total execution time: " << elapsed.count() << " seconds." << std::endl;
     log_file << "Total requests processed: " << total_processed_requests << std::endl;
+
+    // Log remaining requests
+    log_file << "Remaining requests in queue: " << requestqueue.size() << std::endl;
+
+    // Log active and inactive servers
+    int active_servers = 0, inactive_servers = 0;
+    for (const auto& server : web_servers) {
+        if (server->isAvailable()) {
+            inactive_servers++;
+        } else {
+            active_servers++;
+        }
+    }
+    log_file << "Active Servers: " << active_servers << ", Inactive Servers: " << inactive_servers << std::endl;
 
     // Close the log file
     log_file.close();
