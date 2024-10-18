@@ -1,0 +1,162 @@
+\hypertarget{classWebServer}{}\doxysection{Web\+Server Class Reference}
+\label{classWebServer}\index{WebServer@{WebServer}}
+
+
+Class representing a web server that processes requests.  
+
+
+
+
+{\ttfamily \#include $<$Web\+Server.\+h$>$}
+
+
+
+Collaboration diagram for Web\+Server\+:
+% FIG 0
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classWebServer_ad053f4e1808a3c10c7522d0dbbbc031a}{Web\+Server}} ()
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classWebServer}{Web\+Server}} object. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{classWebServer_a6facc54cbb034d850b16ef48ccaef27c}{is\+Available}} ()
+\begin{DoxyCompactList}\small\item\em Check if the server is available to process a new request. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWebServer_a5174a3ea18e9082a225385c4c1650e0e}{process\+Request}} (const \mbox{\hyperlink{classRequest}{Request}} \&req, int current\+\_\+time)
+\begin{DoxyCompactList}\small\item\em Start processing a new request. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classWebServer_a5b04d827a0186bb7d4e8c606fef3c325}{tick}} (int current\+\_\+time, \mbox{\hyperlink{classLoadBalancer}{Load\+Balancer}} $\ast$load\+\_\+balancer)
+\begin{DoxyCompactList}\small\item\em Simulate the passage of time by decrementing the time left to process the request. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+bool \mbox{\hyperlink{classWebServer_a1537bfcaccd90267c1f74823e6aeedb8}{is\+\_\+busy}}
+\begin{DoxyCompactList}\small\item\em Flag indicating if the server is currently processing a request. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{classRequest}{Request}} \mbox{\hyperlink{classWebServer_a456dfd1eedd5129deb3d0f142b8af6b3}{current\+\_\+request}}
+\begin{DoxyCompactList}\small\item\em The request currently being processed by the server. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classWebServer_aaf3b3b96e811ea107977ca704675a801}{time\+\_\+left}}
+\begin{DoxyCompactList}\small\item\em The remaining time to finish processing the current request. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classWebServer_af2f59af9a1f9796a4fb0ca7a42915181}{start\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em The time when the server started processing the current request. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class representing a web server that processes requests. 
+
+The \mbox{\hyperlink{classWebServer}{Web\+Server}} class handles requests assigned by the load balancer. It tracks whether the server is busy, how much time is left to complete the current request, and when the request started. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classWebServer_ad053f4e1808a3c10c7522d0dbbbc031a}\label{classWebServer_ad053f4e1808a3c10c7522d0dbbbc031a}} 
+\index{WebServer@{WebServer}!WebServer@{WebServer}}
+\index{WebServer@{WebServer}!WebServer@{WebServer}}
+\doxysubsubsection{\texorpdfstring{WebServer()}{WebServer()}}
+{\footnotesize\ttfamily Web\+Server\+::\+Web\+Server (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classWebServer}{Web\+Server}} object. 
+
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classWebServer_a6facc54cbb034d850b16ef48ccaef27c}\label{classWebServer_a6facc54cbb034d850b16ef48ccaef27c}} 
+\index{WebServer@{WebServer}!isAvailable@{isAvailable}}
+\index{isAvailable@{isAvailable}!WebServer@{WebServer}}
+\doxysubsubsection{\texorpdfstring{isAvailable()}{isAvailable()}}
+{\footnotesize\ttfamily bool Web\+Server\+::is\+Available (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Check if the server is available to process a new request. 
+
+This method checks if the server is currently processing a request.
+
+\begin{DoxyReturn}{Returns}
+true If the server is available (not busy). 
+
+false If the server is currently busy with a request. 
+\end{DoxyReturn}
+\mbox{\Hypertarget{classWebServer_a5174a3ea18e9082a225385c4c1650e0e}\label{classWebServer_a5174a3ea18e9082a225385c4c1650e0e}} 
+\index{WebServer@{WebServer}!processRequest@{processRequest}}
+\index{processRequest@{processRequest}!WebServer@{WebServer}}
+\doxysubsubsection{\texorpdfstring{processRequest()}{processRequest()}}
+{\footnotesize\ttfamily void Web\+Server\+::process\+Request (\begin{DoxyParamCaption}\item[{const \mbox{\hyperlink{classRequest}{Request}} \&}]{req,  }\item[{int}]{current\+\_\+time }\end{DoxyParamCaption})}
+
+
+
+Start processing a new request. 
+
+This method assigns a new request to the server and records the time it was assigned. The request will take a specified amount of time to complete.
+
+
+\begin{DoxyParams}{Parameters}
+{\em req} & The request to be processed. \\
+\hline
+{\em current\+\_\+time} & The current time in the simulation when the request is assigned. \\
+\hline
+\end{DoxyParams}
+\mbox{\Hypertarget{classWebServer_a5b04d827a0186bb7d4e8c606fef3c325}\label{classWebServer_a5b04d827a0186bb7d4e8c606fef3c325}} 
+\index{WebServer@{WebServer}!tick@{tick}}
+\index{tick@{tick}!WebServer@{WebServer}}
+\doxysubsubsection{\texorpdfstring{tick()}{tick()}}
+{\footnotesize\ttfamily void Web\+Server\+::tick (\begin{DoxyParamCaption}\item[{int}]{current\+\_\+time,  }\item[{\mbox{\hyperlink{classLoadBalancer}{Load\+Balancer}} $\ast$}]{load\+\_\+balancer }\end{DoxyParamCaption})}
+
+
+
+Simulate the passage of time by decrementing the time left to process the request. 
+
+This method simulates the progression of time in the system by reducing the remaining time for the current request. If the request completes, the server becomes available for new requests.
+
+
+\begin{DoxyParams}{Parameters}
+{\em current\+\_\+time} & The current time step in the simulation. \\
+\hline
+{\em load\+\_\+balancer} & The load balancer managing the servers. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classWebServer_a456dfd1eedd5129deb3d0f142b8af6b3}\label{classWebServer_a456dfd1eedd5129deb3d0f142b8af6b3}} 
+\index{WebServer@{WebServer}!current\_request@{current\_request}}
+\index{current\_request@{current\_request}!WebServer@{WebServer}}
+\doxysubsubsection{\texorpdfstring{current\_request}{current\_request}}
+{\footnotesize\ttfamily \mbox{\hyperlink{classRequest}{Request}} Web\+Server\+::current\+\_\+request\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The request currently being processed by the server. 
+
+\mbox{\Hypertarget{classWebServer_a1537bfcaccd90267c1f74823e6aeedb8}\label{classWebServer_a1537bfcaccd90267c1f74823e6aeedb8}} 
+\index{WebServer@{WebServer}!is\_busy@{is\_busy}}
+\index{is\_busy@{is\_busy}!WebServer@{WebServer}}
+\doxysubsubsection{\texorpdfstring{is\_busy}{is\_busy}}
+{\footnotesize\ttfamily bool Web\+Server\+::is\+\_\+busy\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Flag indicating if the server is currently processing a request. 
+
+\mbox{\Hypertarget{classWebServer_af2f59af9a1f9796a4fb0ca7a42915181}\label{classWebServer_af2f59af9a1f9796a4fb0ca7a42915181}} 
+\index{WebServer@{WebServer}!start\_time@{start\_time}}
+\index{start\_time@{start\_time}!WebServer@{WebServer}}
+\doxysubsubsection{\texorpdfstring{start\_time}{start\_time}}
+{\footnotesize\ttfamily int Web\+Server\+::start\+\_\+time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The time when the server started processing the current request. 
+
+\mbox{\Hypertarget{classWebServer_aaf3b3b96e811ea107977ca704675a801}\label{classWebServer_aaf3b3b96e811ea107977ca704675a801}} 
+\index{WebServer@{WebServer}!time\_left@{time\_left}}
+\index{time\_left@{time\_left}!WebServer@{WebServer}}
+\doxysubsubsection{\texorpdfstring{time\_left}{time\_left}}
+{\footnotesize\ttfamily int Web\+Server\+::time\+\_\+left\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+The remaining time to finish processing the current request. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{WebServer_8h}{Web\+Server.\+h}}\item 
+\mbox{\hyperlink{WebServer_8cpp}{Web\+Server.\+cpp}}\end{DoxyCompactItemize}

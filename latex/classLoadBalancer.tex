@@ -1,0 +1,189 @@
+\hypertarget{classLoadBalancer}{}\doxysection{Load\+Balancer Class Reference}
+\label{classLoadBalancer}\index{LoadBalancer@{LoadBalancer}}
+
+
+Class that manages web servers and request queue.  
+
+
+
+
+{\ttfamily \#include $<$Load\+Balancer.\+h$>$}
+
+\doxysubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{classLoadBalancer_a28129830f8abc371340213b348653652}{Load\+Balancer}} (int initial\+\_\+servers, int \mbox{\hyperlink{classLoadBalancer_ace1ce6548026d9081c586390ad991207}{total\+\_\+time}})
+\begin{DoxyCompactList}\small\item\em Construct a new \mbox{\hyperlink{classLoadBalancer}{Load\+Balancer}} object. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoadBalancer_a21fe985c018f2ebeb9e4b1b3cc0289fa}{distribute\+Requests}} ()
+\begin{DoxyCompactList}\small\item\em Distribute requests to available web servers. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoadBalancer_a86fb71fabe8ce27b1ce204b42466d76b}{tick}} ()
+\begin{DoxyCompactList}\small\item\em Simulate one time unit of the load balancer. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoadBalancer_ade5bbb36b7db4cf5cd508968aec4dfae}{add\+Request}} ()
+\begin{DoxyCompactList}\small\item\em Add a new request to the queue. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoadBalancer_a27ac46f6a79556fda93e49dfc3b9d041}{scale\+Servers}} ()
+\begin{DoxyCompactList}\small\item\em Dynamically allocate or deallocate servers based on load. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoadBalancer_a528909054cb20964cba1fb35ceb9003f}{run}} ()
+\begin{DoxyCompactList}\small\item\em Run the load balancer for the specified total time. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{classLoadBalancer_a7122e6913951e0cb0c72d6372ffb5fac}{print\+Processed\+Requests}} ()
+\begin{DoxyCompactList}\small\item\em Print total processed requests. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+int \mbox{\hyperlink{classLoadBalancer_aa8c6065c112cf4a0656cfd9c4b4a98fb}{total\+\_\+processed\+\_\+requests}}
+\begin{DoxyCompactList}\small\item\em Total number of requests processed. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsection*{Private Attributes}
+\begin{DoxyCompactItemize}
+\item 
+std\+::queue$<$ \mbox{\hyperlink{classRequest}{Request}} $>$ \mbox{\hyperlink{classLoadBalancer_a4b513a51493097b294fee71c0fd62ee8}{requestqueue}}
+\begin{DoxyCompactList}\small\item\em Queue of requests to be processed. \end{DoxyCompactList}\item 
+std\+::vector$<$ \mbox{\hyperlink{classWebServer}{Web\+Server}} $\ast$ $>$ \mbox{\hyperlink{classLoadBalancer_a15d8373032b782244f5b2b42e853ad75}{web\+\_\+servers}}
+\begin{DoxyCompactList}\small\item\em List of web servers managed by the load balancer. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLoadBalancer_ace1ce6548026d9081c586390ad991207}{total\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em Total time for simulation. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{classLoadBalancer_a2bfda2caf42a5eb669ce3acdf3401292}{current\+\_\+time}}
+\begin{DoxyCompactList}\small\item\em Current time in the simulation. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Class that manages web servers and request queue. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\mbox{\Hypertarget{classLoadBalancer_a28129830f8abc371340213b348653652}\label{classLoadBalancer_a28129830f8abc371340213b348653652}} 
+\index{LoadBalancer@{LoadBalancer}!LoadBalancer@{LoadBalancer}}
+\index{LoadBalancer@{LoadBalancer}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{LoadBalancer()}{LoadBalancer()}}
+{\footnotesize\ttfamily Load\+Balancer\+::\+Load\+Balancer (\begin{DoxyParamCaption}\item[{int}]{initial\+\_\+servers,  }\item[{int}]{total\+\_\+time }\end{DoxyParamCaption})}
+
+
+
+Construct a new \mbox{\hyperlink{classLoadBalancer}{Load\+Balancer}} object. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em initial\+\_\+servers} & The initial number of web servers to start with. \\
+\hline
+{\em total\+\_\+time} & The total time for which the load balancer will run. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\mbox{\Hypertarget{classLoadBalancer_ade5bbb36b7db4cf5cd508968aec4dfae}\label{classLoadBalancer_ade5bbb36b7db4cf5cd508968aec4dfae}} 
+\index{LoadBalancer@{LoadBalancer}!addRequest@{addRequest}}
+\index{addRequest@{addRequest}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{addRequest()}{addRequest()}}
+{\footnotesize\ttfamily void Load\+Balancer\+::add\+Request (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Add a new request to the queue. 
+
+\mbox{\Hypertarget{classLoadBalancer_a21fe985c018f2ebeb9e4b1b3cc0289fa}\label{classLoadBalancer_a21fe985c018f2ebeb9e4b1b3cc0289fa}} 
+\index{LoadBalancer@{LoadBalancer}!distributeRequests@{distributeRequests}}
+\index{distributeRequests@{distributeRequests}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{distributeRequests()}{distributeRequests()}}
+{\footnotesize\ttfamily void Load\+Balancer\+::distribute\+Requests (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Distribute requests to available web servers. 
+
+\mbox{\Hypertarget{classLoadBalancer_a7122e6913951e0cb0c72d6372ffb5fac}\label{classLoadBalancer_a7122e6913951e0cb0c72d6372ffb5fac}} 
+\index{LoadBalancer@{LoadBalancer}!printProcessedRequests@{printProcessedRequests}}
+\index{printProcessedRequests@{printProcessedRequests}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{printProcessedRequests()}{printProcessedRequests()}}
+{\footnotesize\ttfamily void Load\+Balancer\+::print\+Processed\+Requests (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Print total processed requests. 
+
+\mbox{\Hypertarget{classLoadBalancer_a528909054cb20964cba1fb35ceb9003f}\label{classLoadBalancer_a528909054cb20964cba1fb35ceb9003f}} 
+\index{LoadBalancer@{LoadBalancer}!run@{run}}
+\index{run@{run}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{run()}{run()}}
+{\footnotesize\ttfamily void Load\+Balancer\+::run (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Run the load balancer for the specified total time. 
+
+\mbox{\Hypertarget{classLoadBalancer_a27ac46f6a79556fda93e49dfc3b9d041}\label{classLoadBalancer_a27ac46f6a79556fda93e49dfc3b9d041}} 
+\index{LoadBalancer@{LoadBalancer}!scaleServers@{scaleServers}}
+\index{scaleServers@{scaleServers}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{scaleServers()}{scaleServers()}}
+{\footnotesize\ttfamily void Load\+Balancer\+::scale\+Servers (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Dynamically allocate or deallocate servers based on load. 
+
+\mbox{\Hypertarget{classLoadBalancer_a86fb71fabe8ce27b1ce204b42466d76b}\label{classLoadBalancer_a86fb71fabe8ce27b1ce204b42466d76b}} 
+\index{LoadBalancer@{LoadBalancer}!tick@{tick}}
+\index{tick@{tick}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{tick()}{tick()}}
+{\footnotesize\ttfamily void Load\+Balancer\+::tick (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Simulate one time unit of the load balancer. 
+
+
+
+\doxysubsection{Member Data Documentation}
+\mbox{\Hypertarget{classLoadBalancer_a2bfda2caf42a5eb669ce3acdf3401292}\label{classLoadBalancer_a2bfda2caf42a5eb669ce3acdf3401292}} 
+\index{LoadBalancer@{LoadBalancer}!current\_time@{current\_time}}
+\index{current\_time@{current\_time}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{current\_time}{current\_time}}
+{\footnotesize\ttfamily int Load\+Balancer\+::current\+\_\+time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Current time in the simulation. 
+
+\mbox{\Hypertarget{classLoadBalancer_a4b513a51493097b294fee71c0fd62ee8}\label{classLoadBalancer_a4b513a51493097b294fee71c0fd62ee8}} 
+\index{LoadBalancer@{LoadBalancer}!requestqueue@{requestqueue}}
+\index{requestqueue@{requestqueue}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{requestqueue}{requestqueue}}
+{\footnotesize\ttfamily std\+::queue$<$\mbox{\hyperlink{classRequest}{Request}}$>$ Load\+Balancer\+::requestqueue\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Queue of requests to be processed. 
+
+\mbox{\Hypertarget{classLoadBalancer_aa8c6065c112cf4a0656cfd9c4b4a98fb}\label{classLoadBalancer_aa8c6065c112cf4a0656cfd9c4b4a98fb}} 
+\index{LoadBalancer@{LoadBalancer}!total\_processed\_requests@{total\_processed\_requests}}
+\index{total\_processed\_requests@{total\_processed\_requests}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{total\_processed\_requests}{total\_processed\_requests}}
+{\footnotesize\ttfamily int Load\+Balancer\+::total\+\_\+processed\+\_\+requests}
+
+
+
+Total number of requests processed. 
+
+\mbox{\Hypertarget{classLoadBalancer_ace1ce6548026d9081c586390ad991207}\label{classLoadBalancer_ace1ce6548026d9081c586390ad991207}} 
+\index{LoadBalancer@{LoadBalancer}!total\_time@{total\_time}}
+\index{total\_time@{total\_time}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{total\_time}{total\_time}}
+{\footnotesize\ttfamily int Load\+Balancer\+::total\+\_\+time\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+Total time for simulation. 
+
+\mbox{\Hypertarget{classLoadBalancer_a15d8373032b782244f5b2b42e853ad75}\label{classLoadBalancer_a15d8373032b782244f5b2b42e853ad75}} 
+\index{LoadBalancer@{LoadBalancer}!web\_servers@{web\_servers}}
+\index{web\_servers@{web\_servers}!LoadBalancer@{LoadBalancer}}
+\doxysubsubsection{\texorpdfstring{web\_servers}{web\_servers}}
+{\footnotesize\ttfamily std\+::vector$<$\mbox{\hyperlink{classWebServer}{Web\+Server}}$\ast$$>$ Load\+Balancer\+::web\+\_\+servers\hspace{0.3cm}{\ttfamily [private]}}
+
+
+
+List of web servers managed by the load balancer. 
+
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{LoadBalancer_8h}{Load\+Balancer.\+h}}\item 
+\mbox{\hyperlink{LoadBalancer_8cpp}{Load\+Balancer.\+cpp}}\end{DoxyCompactItemize}
